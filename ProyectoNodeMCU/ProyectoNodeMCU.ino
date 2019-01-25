@@ -6,6 +6,7 @@
 #define PINHT A0
 
 /*datos WiFi*/
+
 const char* ssid = "Nelson Daniel";
 const char* password ="03Mayo1997";
 const char* host = "192.168.43.126"; /*mi ip*/ 
@@ -37,6 +38,7 @@ void loop()
   if(!client.connect(host, port))
   {
         Serial.println("Fallo");
+        delay(5000);
         return;  
   }
   else
