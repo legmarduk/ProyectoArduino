@@ -6,7 +6,6 @@
 #define PINHT A0
 
 /*datos WiFi*/
-
 const char* ssid = "Nelson Daniel";
 const char* password ="03Mayo1997";
 const char* host = "192.168.43.126"; /*mi ip*/ 
@@ -18,11 +17,11 @@ void setup() {
  dht.begin();
  WiFi.begin(ssid,password);
 
- while(WiFi.status() != WL_CONNECTED)
- {
-    Serial.print(".");
-    delay(500);
- }
+  while(WiFi.status() != WL_CONNECTED)
+  {
+      Serial.print(".");
+      delay(500);
+  }
  Serial.println();
  Serial.print("WIFI IP: ");
  Serial.println(WiFi.localIP());
@@ -58,7 +57,6 @@ void loop()
        client.print(String("GET ") + url  +dato1 + temperatura + dato2 +humedad+dato3+humedadTierra+ " HTTP/1.1\r\n"+ "Host: " + host + "\r\n" +"Connection: close\r\n\r\n");
              
        unsigned long timeout = millis();
-      
        while(client.available() == 0)
        {
           if(millis() - timeout >5000)
@@ -68,13 +66,11 @@ void loop()
             return;
           }  
         }
-    
        while(client.available())
        {
         String line = client.readStringUntil('\r');
         Serial.print(line); 
        }  
-    
      Serial.println();
      Serial.println("Conexion cerrada");
   }
